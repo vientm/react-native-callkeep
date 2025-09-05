@@ -189,7 +189,7 @@ public class RNCallKeepModule extends ReactContextBaseJavaModule implements Life
     public void reportNewIncomingCall(String uuid, String number, String callerName, boolean hasVideo, String payload) {
         Log.d(TAG, "[RNCallKeepModule] reportNewIncomingCall, uuid: " + uuid + ", number: " + number + ", callerName: " + callerName);
 
-        this.displayIncomingCall(uuid, number, callerName, hasVideo);
+        this.displayIncomingCallWithOptions(uuid, number, callerName, hasVideo);
 
         // Send event to JS
         WritableMap args = Arguments.createMap();
@@ -436,11 +436,11 @@ public class RNCallKeepModule extends ReactContextBaseJavaModule implements Life
 
     @ReactMethod
     public void displayIncomingCall(String uuid, String number, String callerName) {
-        this.displayIncomingCall(uuid, number, callerName, false, null);
+        this.displayIncomingCallWithOptions(uuid, number, callerName, false, null);
     }
 
     @ReactMethod
-    public void displayIncomingCall(String uuid, String number, String callerName, boolean hasVideo) {
+    public void displayIncomingCallWithOptions(String uuid, String number, String callerName, boolean hasVideo) {
         this.displayIncomingCall(uuid, number, callerName, hasVideo, null);
     }
 
@@ -489,7 +489,7 @@ public class RNCallKeepModule extends ReactContextBaseJavaModule implements Life
     }
 
     @ReactMethod
-    public void startCall(String uuid, String number, String callerName, boolean hasVideo) {
+    public void startCallWithOptions(String uuid, String number, String callerName, boolean hasVideo) {
         this.startCall(uuid, number, callerName, hasVideo, null);
     }
 
